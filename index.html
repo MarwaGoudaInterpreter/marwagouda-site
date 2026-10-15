@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Marwa Gouda · Arabic–English Conference Interpreter</title>
+<meta name="description" content="Marwa Gouda, Arabic–English conference interpreter, translator and voice-over artist in Cairo.">
+<link rel="alternate" hreflang="en" href="https://www.marwagouda.com/">
+<link rel="alternate" hreflang="ar" href="https://www.marwagouda.com/ar/">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Amiri:wght@400;700&family=Lato:wght@300;400;700&family=IBM+Plex+Sans+Arabic:wght@300;400;600&display=swap">
+<style>
+/* Layout: editorial one-pager in greys. Full-width portrait on a soft grey gradient with a translucent band carrying the name; then a narrow white text column (photos, links, words only); a near-black full-screen menu. Single light look by design. */
+:root{--bg:#FFFFFF;--ink:#1B1B1B;--text:#555555;--muted:#8C8C8C;--line:#E7E7E7;--night:#171717;--band:rgba(40,40,40,.55);color-scheme:light}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font:300 1.2rem/1.75 "Lato",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+html[lang=ar] body{font-family:"IBM Plex Sans Arabic","Lato",sans-serif;font-size:1.15rem;line-height:1.95}
+html[lang=en] .ar,html[lang=ar] .en{display:none}
+a{color:inherit}
+img{display:block;max-width:100%;height:auto}
+.col{max-width:760px;margin:0 auto;padding-left:max(24px,env(safe-area-inset-left,0px));padding-right:max(24px,env(safe-area-inset-right,0px))}
+.serif{font-family:"Libre Baskerville",Georgia,serif}
+html[lang=ar] .serif{font-family:"Amiri",serif}
+
+/* hero */
+.hero{position:relative;height:min(92vh,880px);min-height:520px;background:radial-gradient(120% 90% at 50% 40%,#E4E4E4 0%,#BDBDBD 55%,#8E8E8E 100%);overflow:hidden}
+.hero img{position:absolute;left:50%;bottom:0;transform:translateX(-50%);height:100%;width:auto;max-width:none;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 18%,#000 82%,transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 18%,#000 82%,transparent 100%)}
+.band{position:absolute;inset:0 0 auto 0;height:118px;background:var(--band);-webkit-backdrop-filter:blur(2px);backdrop-filter:blur(2px);display:grid;grid-template-columns:56px 1fr 56px;align-items:center;padding:0 max(18px,env(safe-area-inset-left,0px)) 0 max(18px,env(safe-area-inset-right,0px));z-index:2}
+.band h1{margin:0;text-align:center;color:#fff;font-weight:700;font-size:clamp(1.25rem,3.2vw,1.9rem);letter-spacing:.06em;text-transform:uppercase;line-height:1.2}
+html[lang=ar] .band h1{letter-spacing:0;font-size:clamp(1.7rem,4vw,2.4rem)}
+.band h1 small{display:block;font:400 .72rem/1.4 "Lato",sans-serif;letter-spacing:.32em;opacity:.85;margin-top:6px}
+html[lang=ar] .band h1 small{font-family:"IBM Plex Sans Arabic";letter-spacing:0;font-size:.9rem}
+.burger{width:44px;height:44px;border:0;background:none;padding:10px 8px;cursor:pointer;display:grid;gap:7px;align-content:center}
+.burger i{display:block;height:2px;background:#fff;border-radius:2px}
+.lang{justify-self:end;background:none;border:1px solid rgba(255,255,255,.6);color:#fff;font:400 .85rem "Lato",sans-serif;padding:6px 10px;border-radius:3px;cursor:pointer;min-width:44px;min-height:36px}
+html[lang=en] .lang{font-family:"IBM Plex Sans Arabic"}
+
+/* menu */
+.menu{position:fixed;inset:0;background:var(--night);color:#fff;z-index:10;display:none;padding:28px max(28px,env(safe-area-inset-left,0px))}
+.menu.open{display:block}
+.menu .x{position:absolute;top:22px;inset-inline-end:22px;background:none;border:0;color:#fff;font-size:2.2rem;line-height:1;cursor:pointer;width:48px;height:48px}
+.menu nav{margin-top:90px;display:grid;gap:22px}
+.menu nav a{text-decoration:none;font-size:clamp(1.6rem,4.5vw,2.2rem);font-weight:400;color:#fff}
+.menu nav a:first-child{font-weight:700}
+.menu nav a:hover{opacity:.7}
+
+/* text sections */
+section{padding:72px 0 8px}
+.intro{padding-top:64px}
+.intro p:first-child b{color:#444;font-weight:700}
+h2{font-weight:400;color:var(--ink);font-size:clamp(1.6rem,3.6vw,2.1rem);line-height:1.3;margin:0 0 22px}
+h3{font:700 1.05rem/1.4 "Lato",sans-serif;color:#333;margin:28px 0 4px;letter-spacing:.02em}
+html[lang=ar] h3{font-family:"IBM Plex Sans Arabic";font-weight:600}
+p{margin:0 0 1.1em}
+.links{display:flex;flex-wrap:wrap;gap:6px 26px;margin-top:8px;font-size:1rem}
+.links a{color:#333;text-decoration:none;border-bottom:1px solid #BBB;padding-bottom:2px}
+.links a:hover{border-color:#333}
+hr{border:0;border-top:1px solid var(--line);margin:64px 0 0}
+.work{list-style:none;padding:0;margin:0}
+.work li{display:grid;grid-template-columns:96px 1fr;gap:16px;padding:18px 0;border-top:1px solid var(--line)}
+.work li:last-child{border-bottom:1px solid var(--line)}
+.work .y{font-size:.95rem;color:var(--muted)}
+.work b{display:block;color:#333;font-weight:700}
+.work span.d{display:block;font-size:1rem}
+.names{font-size:1rem;color:var(--muted);margin-top:22px}
+.photos{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.photos figure{margin:0}
+.photos img{width:100%;aspect-ratio:4/5;object-fit:cover;filter:saturate(.85)}
+.photos figcaption{font-size:.85rem;color:var(--muted);margin-top:8px;line-height:1.5}
+.photos .wide{grid-column:1/-1}
+.photos .wide img{aspect-ratio:3/2}
+blockquote{margin:0 0 34px;padding:0}
+blockquote p{font-style:italic;color:#444;font-size:1.08rem;line-height:1.75;margin-bottom:8px}
+html[lang=ar] blockquote p{font-style:normal;font-size:1.1rem}
+blockquote footer b{color:#333;font-weight:700}
+html[lang=en] .names.ar{display:none}
+blockquote footer{font-size:.9rem;color:var(--muted)}
+.contact p{margin-bottom:.4em}
+.contact .big{font-size:1.35rem;color:#333}
+.contact a{text-decoration:none;border-bottom:1px solid #BBB}
+.ltr{direction:ltr;unicode-bidi:isolate;display:inline-block}
+footer.site{padding:72px 0 48px;font-size:.85rem;color:var(--muted)}
+@media (max-width:640px){
+  .hero{height:auto;min-height:0;aspect-ratio:828/1330}
+  .hero img{width:100%;height:auto;left:0;top:auto;bottom:0;transform:none;-webkit-mask-image:none;mask-image:none}
+  .band{height:92px}
+  .work li{grid-template-columns:1fr;gap:2px}
+  .photos{grid-template-columns:1fr}
+}
+.band a.lang{text-decoration:none;display:grid;place-items:center}
+</style>
+</head>
+<body>
+<div class="hero" id="top">
+<img alt="Marwa Gouda smiling beside a studio microphone" height="1190" src="img/podcast-mic.jpg" width="828"/>
+<div class="band">
+<button aria-label="Menu" class="burger" id="open" type="button"><i></i><i></i><i></i></button>
+<h1 class="serif">Marwa Gouda<small>Conference Interpreter</small></h1>
+<a class="lang" href="ar/" hreflang="ar" lang="ar">عربي</a>
+</div>
+</div>
+<div aria-label="Menu" class="menu" id="menu" role="dialog">
+<button aria-label="Close" class="x" id="close" type="button">×</button>
+<nav>
+<a href="#about">About</a>
+<a href="#services">Interpreting &amp; Translation</a>
+<a href="#work">Selected Work</a>
+<a href="#credentials">Training &amp; Languages</a>
+<a href="#photos">In the Booth &amp; On Air</a>
+<a href="#off">Off Mic</a>
+<a href="#words">Kind Words</a>
+<a href="#contact">Contact</a>
+</nav>
+</div>
+<main>
+<section class="intro" id="about"><div class="col">
+<p><b>Marwa Gouda</b> is an Arabic–English conference interpreter based in Cairo. She interprets simultaneously and consecutively at conferences, high-level meetings and consultations, with a focus on politics, international affairs, human security and refugee issues. She holds the Professional Diploma in Simultaneous and Consecutive Interpreting from the American University in Cairo.</p>
+<p>Before the booth, she spent thirteen years translating and editing for international brands from English and German into Arabic, and she works as an Arabic voice-over artist. She also interprets for television, and is open to live studio and sports assignments.</p>
+<div class="links">
+<a href="mailto:info@marwagouda.com">Email</a>
+<a href="https://wa.me/201000971283">WhatsApp</a>
+<a href="#work">Selected work</a>
+</div>
+</div></section>
+<section id="services"><div class="col">
+<h2 class="serif">Interpreting &amp; Translation</h2>
+<h3>Conference interpreting · Arabic ⇄ English</h3>
+<p>Simultaneous and consecutive, on site or remote. Each event gets its own glossary, prepared from the agenda and speakers' papers. Documents stay confidential, and NDAs are welcome.</p>
+<h3>Television &amp; sports</h3>
+<p>Live interviews, studio programmes, press conferences and post-match interviews, in a calm, clear voice trained for broadcast.</p>
+<h3>Translation &amp; voice-over · English, German → Arabic</h3>
+<p>Translation, editing, post-editing and subtitling for agencies and brands, in marketing, automotive, technical, IT and e-learning content. And an Arabic voice in Modern Standard or Egyptian for commercials, narration, e-learning and IVR, with a team of male and female voice talents, copywriters and video editors for bigger projects.</p>
+</div></section>
+<section id="work"><div class="col">
+<h2 class="serif">Selected Work</h2>
+<ul class="work">
+<li><span class="y">2026</span><div><b>UNHCR · Global NGO Consultations</b><span class="d">Simultaneous interpreting, English into Arabic, of three sessions, including an address by the High Commissioner. Volunteer.</span></div></li>
+<li><span class="y">2025</span><div><b>Reimagining the Middle East: Polity, Society and Human Security</b><span class="d">International conference of Cairo University's Faculty of Economics and Political Science, Bibliotheca Alexandrina. Arabic into English.</span></div></li>
+<li><span class="y">2025–26</span><div><b>Market research for Kantar and IMR</b><span class="d">About 25 sessions, on site and remote.</span></div></li>
+<li><span class="y">2025</span><div><b>Equinix all-staff meeting</b><span class="d">Remote simultaneous interpreting of a global webinar.</span></div></li>
+<li><span class="y">TV</span><div><b>Al Nahar TV</b><span class="d">Studio appearance.</span></div></li>
+</ul>
+<p class="names">As a translator, preferred linguist on accounts including BMW, Disneyland Paris, Beurer, Henkel, Vestas, Atlas Copco, Weber and The Estée Lauder Companies, through agencies such as LanguageWire, Arablingo24 and PoliLingua.</p>
+</div></section>
+<section id="credentials"><div class="col">
+<h2 class="serif">Training &amp; Languages</h2>
+<ul class="work">
+<li><span class="y">2024</span><div><b>Professional Diploma in Simultaneous and Consecutive Interpreting</b><span class="d">The American University in Cairo</span></div></li>
+<li><span class="y">2023</span><div><b>Foundation Diploma in Translation and Interpreting</b><span class="d">The American University in Cairo</span></div></li>
+<li><span class="y">2025</span><div><b>Professional Conference and Event Management</b><span class="d">The American University in Cairo, and the SHE CAN programme for women entrepreneurs</span></div></li>
+<li><span class="y">2017–21</span><div><b>Voice-over and dubbing training</b><span class="d">Including El-Hakawaty at The Arabic Voice, where she was named Star of Professionalism</span></div></li>
+<li><span class="y">2008</span><div><b>BA in Languages, German and English</b><span class="d">Faculty of Al-Alsun, Ain Shams University</span></div></li>
+</ul>
+<h3>Languages</h3>
+<p>Arabic, A (native) · English, B (C1) · German, C (B2) · Spanish (A2)</p>
+<h3>Tools</h3>
+<p>Trados and Phrase, with a termbase for every client account.</p>
+<p class="names">Also the author of <i>How to Learn German in 10 Days</i> (Dar Al Lata'ef, 2007).</p>
+</div></section>
+<section id="photos"><div class="col">
+<h2 class="serif">In the Booth &amp; On Air</h2>
+<div class="photos">
+<figure class="wide"><img alt="Marwa at the Reimagining the Middle East conference, Bibliotheca Alexandrina" src="img/bibalex-conference.jpg"/><figcaption>Bibliotheca Alexandrina, December 2025</figcaption></figure>
+<figure><img alt="Marwa wearing an interpreter's headset" src="img/booth-headset.jpg"/><figcaption>In the booth</figcaption></figure>
+<figure><img alt="Marwa smiling in a recording booth" src="img/booth-smile.jpg"/><figcaption>Recording studio</figcaption></figure>
+<figure><img alt="Marwa at an interpreting desk with two laptops" src="img/booth-desk.jpg"/><figcaption>Remote session</figcaption></figure>
+<figure><img alt="Marwa at the SHE CAN programme, The American University in Cairo" src="img/she-can.jpg"/><figcaption>The American University in Cairo</figcaption></figure>
+</div>
+</div></section>
+<section id="off"><div class="col">
+<h2 class="serif">Off Mic</h2>
+<p>You'll spend a whole day with your interpreter, so it helps to know who's in the booth.</p>
+<div class="photos off">
+<figure><img alt="Marwa smiling at a live orchestra concert" src="img/concert.jpg"/><figcaption>Front row for live orchestras</figcaption></figure>
+<figure><img alt="A takeaway coffee cup held in a car" src="img/coffee-car.jpg"/><figcaption>Coffee first. Always.</figcaption></figure>
+<figure class="wide"><img alt="An orange sunset over a road lined with palm trees" src="img/sunset-road.jpg"/><figcaption>Cairo sunsets, on the way home</figcaption></figure>
+<figure><img alt="A tabby kitten resting on an arm" src="img/kitten.jpg"/><figcaption>And this little one</figcaption></figure>
+<figure><img alt="Marwa standing in front of the Great Pyramid of Giza" src="img/pyramids.jpg"/><figcaption>Home</figcaption></figure>
+</div>
+</div></section>
+<section id="words"><div class="col">
+<h2 class="serif">Kind Words</h2>
+<blockquote class="serif"><p>“Marwa Gouda has contributed through the second round of El-Hakawaty, our quarterly voice-over educational program and skill-based workshop, and she was also awarded El-Hakawaty Star of Professionalism by the end of this round. Marwa has been hired by THE ARABIC VOICE™ studios as an Arabic voice actor on one of their e-learning voice recording productions upon the end of El-Hakawaty second round. From the very beginning, Marwa proved to be an excellent choice as a female voice actor in Modern Standard Arabic. She could act and deliver the script with significant linguistic and pronunciation skills and never missed any session whenever she was booked for recording, despite constantly changing schedules. Marwa is a very dedicated individual with outstanding acting and linguistic capabilities, and it was an absolute pleasure to work with her. I can recommend her to you without any reservation. Surely, she will be a tremendous asset to any organization.”</p><footer><b>Ahmed AlQotb</b> · Owner and Managing Director, The Arabic Voice™</footer></blockquote>
+<blockquote class="serif"><p>“Marwa Gouda has been working with us as a freelance translator for the language pairs German–Arabic and English–Arabic since October 2016. She met our expectations and delivered very good quality in a timely manner. We have been very satisfied with Marwa's services over the past time and would not hesitate to recommend her further as a professional and reliable freelance translator.”</p><footer><b>Mohamed Nasser</b> · Owner and Co-Founder, Arablingo24</footer></blockquote>
+<blockquote class="serif"><p>“Ms. Marwa Gouda has been supplying EAST Localize with satisfactory translation service from the year 2017 to date, mostly for the subject matters of software, medical, marketing and many other fields, and she has a good knowledge of CAT tools. Working with Marwa on several projects has given us a very good insight into her capabilities and skills. She is a hard worker who commits to deliveries on time with good quality. Marwa is a reliable translator who would be a great addition to your team. She has excellent written and verbal communication skills, is extremely organized, can work independently, and is able to effectively multi-task to ensure that all projects are completed in a timely manner. It has been a pleasure working with Marwa and we highly recommend her services to you.”</p><footer><b>Mohammed Hareth</b> · Production Manager, EAST Localize</footer></blockquote>
+
+</div></section>
+<section class="contact" id="contact"><div class="col">
+<h2 class="serif">Contact</h2>
+<p>For conferences and events, please send the date, the languages and a line about the audience.</p>
+<p class="big"><a class="ltr" href="mailto:info@marwagouda.com">info@marwagouda.com</a></p>
+<p class="big"><a class="ltr" href="https://wa.me/201000971283">+20 100 097 1283</a></p>
+</div></section>
+</main>
+<footer class="site"><div class="col">© 2026 Marwa Gouda · Cairo</div></footer>
+<script>
+(function(){var menu=document.getElementById('menu');
+document.getElementById('open').addEventListener('click',function(){menu.classList.add('open')});
+document.getElementById('close').addEventListener('click',function(){menu.classList.remove('open')});
+menu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){menu.classList.remove('open')})});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')menu.classList.remove('open')});})();
+</script>
+</body>
+</html>
