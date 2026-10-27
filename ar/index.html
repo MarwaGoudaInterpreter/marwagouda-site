@@ -95,6 +95,23 @@ footer.site{padding:72px 0 48px;font-size:.85rem;color:var(--muted)}
   .work li{grid-template-columns:1fr;gap:2px}
   .photos{grid-template-columns:1fr}
 }
+/* quote form: same quiet greys, underlined fields, two send buttons */
+.quote{display:grid;grid-template-columns:1fr 1fr;gap:18px 22px;margin:28px 0 40px}
+.quote label{display:grid;gap:4px;font-size:.85rem;color:var(--muted)}
+.quote .full{grid-column:1/-1}
+.quote input,.quote select,.quote textarea{font:inherit;font-size:1rem;color:var(--ink);background:transparent;border:0;border-bottom:1px solid #BBB;border-radius:0;padding:8px 0;width:100%;-webkit-appearance:none;appearance:none}
+.quote select{background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23888'/%3E%3C/svg%3E") no-repeat right 2px center;padding-right:18px}
+html[lang=ar] .quote select{background-position:left 2px center;padding-right:0;padding-left:18px}
+.quote textarea{resize:vertical;min-height:84px}
+.quote input:focus,.quote select:focus,.quote textarea:focus{outline:0;border-bottom-color:var(--ink)}
+.quote .send{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:12px;margin-top:6px}
+.quote button{font:inherit;font-size:1rem;padding:12px 22px;border-radius:3px;cursor:pointer;border:1px solid var(--ink);min-height:48px}
+.quote button[value=mail]{background:var(--ink);color:#fff}
+.quote button[value=wa]{background:#fff;color:var(--ink)}
+.quote button:hover{opacity:.85}
+.quote .note{grid-column:1/-1;font-size:.85rem;color:var(--muted);margin:0}
+.links a.cta{color:var(--ink);font-weight:700;border-bottom-color:var(--ink)}
+@media (max-width:640px){.quote{grid-template-columns:1fr}}
 .band a.lang{text-decoration:none;display:grid;place-items:center}
 </style>
 </head>
@@ -117,7 +134,7 @@ footer.site{padding:72px 0 48px;font-size:.85rem;color:var(--muted)}
 <a href="#photos">في المقصورة وعلى الهواء</a>
 <a href="#off">بعيدًا عن الميكروفون</a>
 <a href="#words">كلمات طيبة</a>
-<a href="#contact">تواصل</a>
+<a href="#contact">اطلب عرض سعر</a>
 </nav>
 </div>
 <main>
@@ -125,6 +142,7 @@ footer.site{padding:72px 0 48px;font-size:.85rem;color:var(--muted)}
 <p><b>مروة جودة</b> مترجمة فورية من العربية إلى الإنجليزية وبالعكس، مقيمة في القاهرة. تعمل في الترجمة الفورية والتتابعية في المؤتمرات والاجتماعات رفيعة المستوى والمشاورات، مع تركيز على السياسة والشؤون الدولية والأمن الإنساني وقضايا اللاجئين. وهي حاصلة على الدبلومة المهنية في الترجمة الفورية والتتابعية من الجامعة الأمريكية بالقاهرة.</p>
 <p>وقبل المقصورة، أمضت ثلاثة عشر عامًا في الترجمة والمراجعة لعلامات تجارية عالمية من الإنجليزية والألمانية إلى العربية، وتعمل كذلك معلّقةً صوتية باللغة العربية. وصوتها مدرَّب على البث، وترحب بالعمل في التلفزيون والبرامج المباشرة والفعاليات الرياضية.</p>
 <div class="links">
+<a class="cta" href="#contact">اطلب عرض سعر</a>
 <a href="mailto:info@marwagouda.com">البريد الإلكتروني</a>
 <a href="https://wa.me/201000971283">واتساب</a>
 <a href="#work">أعمال مختارة</a>
@@ -191,8 +209,31 @@ footer.site{padding:72px 0 48px;font-size:.85rem;color:var(--muted)}
 <p class="names ar">التوصيات مترجمة عن أصلها الإنجليزي.</p>
 </div></section>
 <section class="contact" id="contact"><div class="col">
-<h2 class="serif">تواصل</h2>
-<p>للمؤتمرات والفعاليات، يُرجى إرسال التاريخ واللغات وسطر عن الجمهور.</p>
+<h2 class="serif">اطلب عرض سعر</h2>
+<p>أخبرني عن فعاليتك، وسأرسل إليك عرض سعر يناسبها، في العادة خلال يوم واحد.</p>
+<form class="quote" id="quote">
+<label>الاسم<input name="name" autocomplete="name" required></label>
+<label>الجهة<input name="org" autocomplete="organization"></label>
+<label>الخدمة<select name="service"><option>ترجمة فورية</option><option>ترجمة تتابعية</option><option>ترجمة تحريرية</option><option>تعليق صوتي</option><option>لم أحدد بعد</option></select></label>
+<label>اللغات<input name="langs" value="العربية ⇄ الإنجليزية"></label>
+<label>التاريخ<input name="date" required></label>
+<label>المدينة، أو عن بُعد<input name="where"></label>
+<label class="full">المدة<input name="dur" placeholder="مثال: يومان، من 9:00 إلى 17:00"></label>
+<label class="full">عن الفعالية والجمهور<textarea name="notes" placeholder="الموضوع، وعدد المشاركين، والمستندات المتاحة…"></textarea></label>
+<div class="send"><button type="submit" value="mail">أرسل بالبريد الإلكتروني</button><button type="submit" value="wa">أرسل عبر واتساب</button></div>
+<p class="note">تُفتح رسالتك جاهزة للإرسال، ولا يحفظ الموقع أي بيانات.</p>
+</form>
+<script>
+(function(){var f=document.getElementById('quote'),T={"keys": ["الاسم", "الجهة", "الخدمة", "اللغات", "التاريخ", "المكان", "المدة", "التفاصيل"], "hello": "مرحبًا مروة، أرغب في عرض سعر:", "subj": "طلب عرض سعر"},F=['name','org','service','langs','date','where','dur','notes'];
+f.addEventListener('submit',function(e){e.preventDefault();var b=e.submitter||document.activeElement,lines=[T.hello,''];
+F.forEach(function(k,i){var v=(f.elements[k].value||'').trim();if(v)lines.push(T.keys[i]+': '+v)});
+var msg=lines.join('\n');
+if(!b||b.value!=='wa')location.href='mailto:info@marwagouda.com?subject='+encodeURIComponent(T.subj)+'&body='+encodeURIComponent(msg);
+else window.open('https://wa.me/201000971283?text='+encodeURIComponent(msg),'_blank','noopener');});})();
+</script>
+<hr>
+<h2 class="serif" style="margin-top:40px">تواصل</h2>
+<p>أو تواصل معي مباشرة:</p>
 <p class="big"><a class="ltr" href="mailto:info@marwagouda.com">info@marwagouda.com</a></p>
 <p class="big"><a class="ltr" href="https://wa.me/201000971283">+20 100 097 1283</a></p>
 </div></section>

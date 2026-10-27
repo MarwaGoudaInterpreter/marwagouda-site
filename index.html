@@ -95,6 +95,23 @@ footer.site{padding:72px 0 48px;font-size:.85rem;color:var(--muted)}
   .work li{grid-template-columns:1fr;gap:2px}
   .photos{grid-template-columns:1fr}
 }
+/* quote form: same quiet greys, underlined fields, two send buttons */
+.quote{display:grid;grid-template-columns:1fr 1fr;gap:18px 22px;margin:28px 0 40px}
+.quote label{display:grid;gap:4px;font-size:.85rem;color:var(--muted)}
+.quote .full{grid-column:1/-1}
+.quote input,.quote select,.quote textarea{font:inherit;font-size:1rem;color:var(--ink);background:transparent;border:0;border-bottom:1px solid #BBB;border-radius:0;padding:8px 0;width:100%;-webkit-appearance:none;appearance:none}
+.quote select{background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23888'/%3E%3C/svg%3E") no-repeat right 2px center;padding-right:18px}
+html[lang=ar] .quote select{background-position:left 2px center;padding-right:0;padding-left:18px}
+.quote textarea{resize:vertical;min-height:84px}
+.quote input:focus,.quote select:focus,.quote textarea:focus{outline:0;border-bottom-color:var(--ink)}
+.quote .send{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:12px;margin-top:6px}
+.quote button{font:inherit;font-size:1rem;padding:12px 22px;border-radius:3px;cursor:pointer;border:1px solid var(--ink);min-height:48px}
+.quote button[value=mail]{background:var(--ink);color:#fff}
+.quote button[value=wa]{background:#fff;color:var(--ink)}
+.quote button:hover{opacity:.85}
+.quote .note{grid-column:1/-1;font-size:.85rem;color:var(--muted);margin:0}
+.links a.cta{color:var(--ink);font-weight:700;border-bottom-color:var(--ink)}
+@media (max-width:640px){.quote{grid-template-columns:1fr}}
 .band a.lang{text-decoration:none;display:grid;place-items:center}
 </style>
 </head>
@@ -117,7 +134,7 @@ footer.site{padding:72px 0 48px;font-size:.85rem;color:var(--muted)}
 <a href="#photos">In the Booth &amp; On Air</a>
 <a href="#off">Off Mic</a>
 <a href="#words">Kind Words</a>
-<a href="#contact">Contact</a>
+<a href="#contact">Request a Quote</a>
 </nav>
 </div>
 <main>
@@ -125,6 +142,7 @@ footer.site{padding:72px 0 48px;font-size:.85rem;color:var(--muted)}
 <p><b>Marwa Gouda</b> is an Arabic–English conference interpreter based in Cairo. She interprets simultaneously and consecutively at conferences, high-level meetings and consultations, with a focus on politics, international affairs, human security and refugee issues. She holds the Professional Diploma in Simultaneous and Consecutive Interpreting from the American University in Cairo.</p>
 <p>Before the booth, she spent thirteen years translating and editing for international brands from English and German into Arabic, and she works as an Arabic voice-over artist. Her voice is trained for broadcast, and she is open to television, live studio and sports assignments.</p>
 <div class="links">
+<a class="cta" href="#contact">Request a quote</a>
 <a href="mailto:info@marwagouda.com">Email</a>
 <a href="https://wa.me/201000971283">WhatsApp</a>
 <a href="#work">Selected work</a>
@@ -191,8 +209,31 @@ footer.site{padding:72px 0 48px;font-size:.85rem;color:var(--muted)}
 
 </div></section>
 <section class="contact" id="contact"><div class="col">
-<h2 class="serif">Contact</h2>
-<p>For conferences and events, please send the date, the languages and a line about the audience.</p>
+<h2 class="serif">Request a Quote</h2>
+<p>Tell me about your event and I will reply with a tailored quote, usually within a day.</p>
+<form class="quote" id="quote">
+<label>Your name<input name="name" autocomplete="name" required></label>
+<label>Organisation<input name="org" autocomplete="organization"></label>
+<label>Service<select name="service"><option>Simultaneous interpreting</option><option>Consecutive interpreting</option><option>Translation</option><option>Voice-over</option><option>Not sure yet</option></select></label>
+<label>Languages<input name="langs" value="Arabic ⇄ English"></label>
+<label>Date(s)<input name="date" required></label>
+<label>City, or remote<input name="where"></label>
+<label class="full">Duration<input name="dur" placeholder="e.g. two days, 9:00 to 17:00"></label>
+<label class="full">About the event and audience<textarea name="notes" placeholder="Topic, number of participants, documents available…"></textarea></label>
+<div class="send"><button type="submit" value="mail">Send by email</button><button type="submit" value="wa">Send on WhatsApp</button></div>
+<p class="note">Your message opens ready to send. Nothing is stored on this site.</p>
+</form>
+<script>
+(function(){var f=document.getElementById('quote'),T={"keys": ["Name", "Organisation", "Service", "Languages", "Date(s)", "Location", "Duration", "Details"], "hello": "Hello Marwa, I would like a quote:", "subj": "Quote request"},F=['name','org','service','langs','date','where','dur','notes'];
+f.addEventListener('submit',function(e){e.preventDefault();var b=e.submitter||document.activeElement,lines=[T.hello,''];
+F.forEach(function(k,i){var v=(f.elements[k].value||'').trim();if(v)lines.push(T.keys[i]+': '+v)});
+var msg=lines.join('\n');
+if(!b||b.value!=='wa')location.href='mailto:info@marwagouda.com?subject='+encodeURIComponent(T.subj)+'&body='+encodeURIComponent(msg);
+else window.open('https://wa.me/201000971283?text='+encodeURIComponent(msg),'_blank','noopener');});})();
+</script>
+<hr>
+<h2 class="serif" style="margin-top:40px">Contact</h2>
+<p>Or write to me directly:</p>
 <p class="big"><a class="ltr" href="mailto:info@marwagouda.com">info@marwagouda.com</a></p>
 <p class="big"><a class="ltr" href="https://wa.me/201000971283">+20 100 097 1283</a></p>
 </div></section>
