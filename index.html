@@ -11,7 +11,7 @@
 </script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Marwa Gouda · Arabic–English Conference Interpreter</title>
+<title>Marwa Gouda · Conference Interpreter, Translator and Voice-over Artist</title>
 <meta name="description" content="Marwa Gouda, Arabic–English conference interpreter, translator and voice-over artist in Cairo.">
 <link rel="alternate" hreflang="en" href="https://www.marwagouda.com/">
 <link rel="alternate" hreflang="ar" href="https://www.marwagouda.com/ar/">
@@ -91,7 +91,7 @@ footer.site{padding:72px 0 48px;font-size:.85rem;color:var(--muted)}
 @media (max-width:640px){
   .hero{height:auto;min-height:0;aspect-ratio:828/1330}
   .hero img{width:100%;height:auto;left:0;top:auto;bottom:0;transform:none;-webkit-mask-image:none;mask-image:none}
-  .band{height:92px}
+  .band{height:104px}
   .work li{grid-template-columns:1fr;gap:2px}
   .photos{grid-template-columns:1fr}
 }
@@ -112,6 +112,22 @@ html[lang=ar] .quote select{background-position:left 2px center;padding-right:0;
 .quote .note{grid-column:1/-1;font-size:.85rem;color:var(--muted);margin:0}
 .links a.cta{color:var(--ink);font-weight:700;border-bottom-color:var(--ink)}
 @media (max-width:640px){.quote{grid-template-columns:1fr}}
+/* service picker: three quiet cards; the chosen one gets a dark border */
+.quote .pick{grid-column:1/-1;border:0;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.quote .pick legend{font-size:.85rem;color:var(--muted);margin-bottom:8px;padding:0}
+.quote .pick label{position:relative;display:block;border:1px solid #D4D4D4;border-radius:3px;padding:16px 16px 14px;cursor:pointer;color:var(--text);transition:border-color .15s,background-color .15s}
+.quote .pick input{position:absolute;opacity:0;width:1px;height:1px;pointer-events:none}
+.quote .pick b{display:block;font-size:1.02rem;font-weight:700;color:var(--ink);margin-bottom:4px}
+.quote .pick span{display:block;font-size:.85rem;line-height:1.5}
+.quote .pick label:hover{border-color:#999}
+.quote .pick input:checked+b{text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:1px}
+.quote .pick label:has(input:checked){border-color:var(--ink);background:#F5F5F5}
+.quote .pick label:has(input:focus-visible){outline:2px solid var(--ink);outline-offset:2px}
+.quote [hidden]{display:none!important}
+.quote .grp{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;gap:18px 22px}
+.quote .hint{grid-column:1/-1;font-size:.9rem;color:var(--muted);margin:0}
+@media (max-width:640px){.quote .pick,.quote .grp{grid-template-columns:1fr}}
+
 .band a.lang{text-decoration:none;display:grid;place-items:center}
 </style>
 </head>
@@ -120,7 +136,7 @@ html[lang=ar] .quote select{background-position:left 2px center;padding-right:0;
 <img alt="Marwa Gouda smiling beside a studio microphone" height="1190" src="img/podcast-mic.jpg" width="828"/>
 <div class="band">
 <button aria-label="Menu" class="burger" id="open" type="button"><i></i><i></i><i></i></button>
-<h1 class="serif">Marwa Gouda<small>Conference Interpreter</small></h1>
+<h1 class="serif">Marwa Gouda<small>Conference Interpreter<br>Translator &amp; Voice-over Artist</small></h1>
 <a class="lang" href="ar/" hreflang="ar" lang="ar">عربي</a>
 </div>
 </div>
@@ -212,25 +228,62 @@ html[lang=ar] .quote select{background-position:left 2px center;padding-right:0;
 </div></section>
 <section class="contact" id="contact"><div class="col">
 <h2 class="serif">Request a Quote</h2>
-<p>Tell me about your event and I will reply with a tailored quote, usually within a day.</p>
-<form class="quote" id="quote">
+<p>Choose a service and tell me about your project. I will reply with a tailored quote, usually within a day.</p>
+<form class="quote" id="quote" novalidate>
+<fieldset class="pick"><legend>What do you need?</legend><label><input type="radio" name="svc" value="interp" data-name="Conference interpreting" required><b>Conference interpreting</b><span>Simultaneous or consecutive, Arabic ⇄ English</span></label><label><input type="radio" name="svc" value="trans" data-name="Translation" required><b>Translation</b><span>English or German into Arabic</span></label><label><input type="radio" name="svc" value="vo" data-name="Voice-over" required><b>Voice-over</b><span>Arabic, Modern Standard or Egyptian</span></label></fieldset>
+<p class="hint" id="qhint">Choose a service above to see the questions for it.</p>
+<div class="grp" id="qbody" hidden>
 <label>Your name<input name="name" autocomplete="name" required></label>
 <label>Organisation<input name="org" autocomplete="organization"></label>
-<label>Service<select name="service"><option>Simultaneous interpreting</option><option>Consecutive interpreting</option><option>Translation</option><option>Voice-over</option><option>Not sure yet</option></select></label>
-<label>Languages<input name="langs" value="Arabic ⇄ English"></label>
-<label>Date(s)<input name="date" required></label>
-<label>City, or remote<input name="where"></label>
-<label class="full">Duration<input name="dur" placeholder="e.g. two days, 9:00 to 17:00"></label>
-<label class="full">About the event and audience<textarea name="notes" placeholder="Topic, number of participants, documents available…"></textarea></label>
-<div class="send"><button type="submit" value="mail">Send by email</button><button type="submit" value="wa">Send on WhatsApp</button></div>
-<p class="note">Your message opens ready to send. Nothing is stored on this site.</p>
+</div>
+<div class="grp" data-svc="interp" hidden>
+<label>Type of interpreting<select name="interp-mode" data-k="Type of interpreting"><option value="">Choose…</option><option>Simultaneous</option><option>Consecutive</option><option>Not sure yet</option></select></label>
+<label>Languages<select name="interp-dir" data-k="Languages"><option value="">Choose…</option><option>Arabic ⇄ English, both directions</option><option>English into Arabic</option><option>Arabic into English</option></select></label>
+<label>Date(s)<input name="interp-date" data-k="Date(s)" required placeholder="e.g. 12–13 December 2026"></label>
+<label>City and venue, or remote<input name="interp-where" data-k="City and venue, or remote" placeholder="e.g. Cairo, or Zoom"></label>
+<label>Working hours per day<input name="interp-hours" data-k="Working hours per day" placeholder="e.g. 9:00 to 17:00"></label>
+<label>Interpreting booth and equipment<select name="interp-equip" data-k="Interpreting booth and equipment"><option value="">Choose…</option><option>Provided by the venue</option><option>Not available yet</option><option>Not sure</option><option>Remote platform</option></select></label>
+<label class="full">About the event<textarea name="interp-about" data-k="About the event" placeholder="Topic, audience, number of participants, speeches or slides available…"></textarea></label>
+</div>
+<div class="grp" data-svc="trans" hidden>
+<label>Language pair<select name="trans-pair" data-k="Language pair"><option value="">Choose…</option><option>English into Arabic</option><option>German into Arabic</option></select></label>
+<label>Service<select name="trans-task" data-k="Service"><option value="">Choose…</option><option>Translation</option><option>Editing / proofreading</option><option>Machine translation post-editing</option><option>Subtitling</option></select></label>
+<label>Subject<select name="trans-field" data-k="Subject"><option value="">Choose…</option><option>Marketing</option><option>Technical</option><option>Automotive</option><option>IT and software</option><option>E-learning</option><option>Medical</option><option>Other</option></select></label>
+<label>Word count (approximate)<input name="trans-words" data-k="Word count (approximate)" placeholder="e.g. 3,500"></label>
+<label>Deadline<input type="date" name="trans-deadline" data-k="Deadline" required></label>
+<label>File format<input name="trans-format" data-k="File format" placeholder="Word, PDF, Excel, Trados or Phrase package…"></label>
+<label class="full">Anything else I should know<textarea name="trans-about" data-k="Anything else I should know" placeholder="Audience, style guide, glossary, reference material…"></textarea></label>
+<p class="hint">If you have the files, please attach them to the email.</p>
+</div>
+<div class="grp" data-svc="vo" hidden>
+<label>Arabic<select name="vo-variety" data-k="Arabic"><option value="">Choose…</option><option>Modern Standard Arabic</option><option>Egyptian Arabic</option></select></label>
+<label>Used for<select name="vo-use" data-k="Used for"><option value="">Choose…</option><option>Commercial</option><option>Narration or documentary</option><option>E-learning</option><option>IVR or phone system</option><option>Other</option></select></label>
+<label>Voices<select name="vo-voices" data-k="Voices"><option value="">Choose…</option><option>One female voice (mine)</option><option>Female and male voices</option><option>Several voices</option></select></label>
+<label>Script length<input name="vo-length" data-k="Script length" placeholder="Words or minutes"></label>
+<label>Deadline<input type="date" name="vo-deadline" data-k="Deadline" required></label>
+<label>Script<select name="vo-script" data-k="Script"><option value="">Choose…</option><option>Ready in Arabic</option><option>Needs translating into Arabic</option><option>Not written yet</option></select></label>
+<label class="full">Anything else I should know<textarea name="vo-about" data-k="Anything else I should know" placeholder="Tone, pace, video to sync with, delivery format…"></textarea></label>
+<p class="hint">If you have the files, please attach them to the email.</p>
+</div>
+<div class="send" id="qsend" hidden><button type="submit" value="mail">Send by email</button><button type="submit" value="wa">Send on WhatsApp</button></div>
+<p class="note" id="qnote" hidden>Your message opens ready to send. Nothing is stored on this site.</p>
 </form>
 <script>
-(function(){var f=document.getElementById('quote'),T={"keys": ["Name", "Organisation", "Service", "Languages", "Date(s)", "Location", "Duration", "Details"], "hello": "Hello Marwa, I would like a quote:", "subj": "Quote request"},F=['name','org','service','langs','date','where','dur','notes'];
-f.addEventListener('submit',function(e){e.preventDefault();var b=e.submitter||document.activeElement,lines=[T.hello,''];
-F.forEach(function(k,i){var v=(f.elements[k].value||'').trim();if(v)lines.push(T.keys[i]+': '+v)});
-var msg=lines.join('\n');
-if(!b||b.value!=='wa')location.href='mailto:info@marwagouda.com?subject='+encodeURIComponent(T.subj)+'&body='+encodeURIComponent(msg);
+(function(){var f=document.getElementById('quote'),T={"hello": "Hello Marwa, I would like a quote for {svc}.", "subj": "Quote request: {svc}", "kName": "Name", "kOrg": "Organisation"};
+function sync(){var c=f.querySelector('input[name=svc]:checked'),s=c&&c.value;
+document.getElementById('qhint').hidden=!!s;document.getElementById('qbody').hidden=!s;document.getElementById('qsend').hidden=!s;document.getElementById('qnote').hidden=!s;
+f.querySelectorAll('.grp[data-svc]').forEach(function(g){var on=g.getAttribute('data-svc')===s;g.hidden=!on;
+g.querySelectorAll('input,select,textarea').forEach(function(el){el.disabled=!on})});}
+f.addEventListener('change',function(e){if(e.target.name==='svc')sync()});sync();
+f.addEventListener('submit',function(e){e.preventDefault();
+if(!f.checkValidity()){f.reportValidity();return}
+var b=e.submitter||document.activeElement,c=f.querySelector('input[name=svc]:checked'),svc=c.getAttribute('data-name');
+var lines=[T.hello.replace('{svc}',svc),''];
+function add(k,v){v=(v||'').trim();if(v)lines.push(k+': '+v)}
+add(T.kName,f.elements.name.value);add(T.kOrg,f.elements.org.value);
+f.querySelectorAll('.grp[data-svc="'+c.value+'"] [data-k]').forEach(function(el){add(el.getAttribute('data-k'),el.value)});
+var msg=lines.join('\n'),subj=T.subj.replace('{svc}',svc);
+if(!b||b.value!=='wa')location.href='mailto:info@marwagouda.com?subject='+encodeURIComponent(subj)+'&body='+encodeURIComponent(msg);
 else window.open('https://wa.me/201000971283?text='+encodeURIComponent(msg),'_blank','noopener');});})();
 </script>
 <hr>

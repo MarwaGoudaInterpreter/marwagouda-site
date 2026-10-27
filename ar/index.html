@@ -11,7 +11,7 @@
 </script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>مروة جودة · مترجمة فورية للمؤتمرات</title>
+<title>مروة جودة · مترجمة فورية للمؤتمرات ومترجمة تحريرية ومعلّقة صوتية</title>
 <meta name="description" content="مروة جودة، مترجمة فورية من العربية إلى الإنجليزية وبالعكس، ومترجمة تحريرية ومعلّقة صوتية في القاهرة.">
 <link rel="alternate" hreflang="en" href="https://www.marwagouda.com/">
 <link rel="alternate" hreflang="ar" href="https://www.marwagouda.com/ar/">
@@ -91,7 +91,7 @@ footer.site{padding:72px 0 48px;font-size:.85rem;color:var(--muted)}
 @media (max-width:640px){
   .hero{height:auto;min-height:0;aspect-ratio:828/1330}
   .hero img{width:100%;height:auto;left:0;top:auto;bottom:0;transform:none;-webkit-mask-image:none;mask-image:none}
-  .band{height:92px}
+  .band{height:104px}
   .work li{grid-template-columns:1fr;gap:2px}
   .photos{grid-template-columns:1fr}
 }
@@ -112,6 +112,22 @@ html[lang=ar] .quote select{background-position:left 2px center;padding-right:0;
 .quote .note{grid-column:1/-1;font-size:.85rem;color:var(--muted);margin:0}
 .links a.cta{color:var(--ink);font-weight:700;border-bottom-color:var(--ink)}
 @media (max-width:640px){.quote{grid-template-columns:1fr}}
+/* service picker: three quiet cards; the chosen one gets a dark border */
+.quote .pick{grid-column:1/-1;border:0;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.quote .pick legend{font-size:.85rem;color:var(--muted);margin-bottom:8px;padding:0}
+.quote .pick label{position:relative;display:block;border:1px solid #D4D4D4;border-radius:3px;padding:16px 16px 14px;cursor:pointer;color:var(--text);transition:border-color .15s,background-color .15s}
+.quote .pick input{position:absolute;opacity:0;width:1px;height:1px;pointer-events:none}
+.quote .pick b{display:block;font-size:1.02rem;font-weight:700;color:var(--ink);margin-bottom:4px}
+.quote .pick span{display:block;font-size:.85rem;line-height:1.5}
+.quote .pick label:hover{border-color:#999}
+.quote .pick input:checked+b{text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:1px}
+.quote .pick label:has(input:checked){border-color:var(--ink);background:#F5F5F5}
+.quote .pick label:has(input:focus-visible){outline:2px solid var(--ink);outline-offset:2px}
+.quote [hidden]{display:none!important}
+.quote .grp{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;gap:18px 22px}
+.quote .hint{grid-column:1/-1;font-size:.9rem;color:var(--muted);margin:0}
+@media (max-width:640px){.quote .pick,.quote .grp{grid-template-columns:1fr}}
+
 .band a.lang{text-decoration:none;display:grid;place-items:center}
 </style>
 </head>
@@ -120,7 +136,7 @@ html[lang=ar] .quote select{background-position:left 2px center;padding-right:0;
 <img alt="Marwa Gouda smiling beside a studio microphone" height="1190" src="../img/podcast-mic.jpg" width="828"/>
 <div class="band">
 <button aria-label="Menu" class="burger" id="open" type="button"><i></i><i></i><i></i></button>
-<h1 class="serif">مروة جودة<small>مترجمة فورية للمؤتمرات</small></h1>
+<h1 class="serif">مروة جودة<small>مترجمة فورية للمؤتمرات<br>مترجمة تحريرية ومعلّقة صوتية</small></h1>
 <a class="lang" href="../" hreflang="en" lang="en">EN</a>
 </div>
 </div>
@@ -212,25 +228,62 @@ html[lang=ar] .quote select{background-position:left 2px center;padding-right:0;
 </div></section>
 <section class="contact" id="contact"><div class="col">
 <h2 class="serif">اطلب عرض سعر</h2>
-<p>أخبرني عن فعاليتك، وسأرسل إليك عرض سعر يناسبها، في العادة خلال يوم واحد.</p>
-<form class="quote" id="quote">
+<p>اختر الخدمة وأخبرني عن مشروعك، وسأرسل إليك عرض سعر يناسبه، في العادة خلال يوم واحد.</p>
+<form class="quote" id="quote" novalidate>
+<fieldset class="pick"><legend>ما الخدمة التي تحتاج إليها؟</legend><label><input type="radio" name="svc" value="interp" data-name="ترجمة فورية للمؤتمرات" required><b>ترجمة فورية للمؤتمرات</b><span>فورية أو تتابعية، عربي ⇄ إنجليزي</span></label><label><input type="radio" name="svc" value="trans" data-name="ترجمة تحريرية" required><b>ترجمة تحريرية</b><span>من الإنجليزية أو الألمانية إلى العربية</span></label><label><input type="radio" name="svc" value="vo" data-name="تعليق صوتي" required><b>تعليق صوتي</b><span>بالعربية الفصحى أو المصرية</span></label></fieldset>
+<p class="hint" id="qhint">اختر الخدمة أعلاه لتظهر الأسئلة الخاصة بها.</p>
+<div class="grp" id="qbody" hidden>
 <label>الاسم<input name="name" autocomplete="name" required></label>
 <label>الجهة<input name="org" autocomplete="organization"></label>
-<label>الخدمة<select name="service"><option>ترجمة فورية</option><option>ترجمة تتابعية</option><option>ترجمة تحريرية</option><option>تعليق صوتي</option><option>لم أحدد بعد</option></select></label>
-<label>اللغات<input name="langs" value="العربية ⇄ الإنجليزية"></label>
-<label>التاريخ<input name="date" required></label>
-<label>المدينة، أو عن بُعد<input name="where"></label>
-<label class="full">المدة<input name="dur" placeholder="مثال: يومان، من 9:00 إلى 17:00"></label>
-<label class="full">عن الفعالية والجمهور<textarea name="notes" placeholder="الموضوع، وعدد المشاركين، والمستندات المتاحة…"></textarea></label>
-<div class="send"><button type="submit" value="mail">أرسل بالبريد الإلكتروني</button><button type="submit" value="wa">أرسل عبر واتساب</button></div>
-<p class="note">تُفتح رسالتك جاهزة للإرسال، ولا يحفظ الموقع أي بيانات.</p>
+</div>
+<div class="grp" data-svc="interp" hidden>
+<label>نوع الترجمة<select name="interp-mode" data-k="نوع الترجمة"><option value="">اختر…</option><option>فورية</option><option>تتابعية</option><option>لم أحدد بعد</option></select></label>
+<label>اللغات<select name="interp-dir" data-k="اللغات"><option value="">اختر…</option><option>العربية ⇄ الإنجليزية، في الاتجاهين</option><option>من الإنجليزية إلى العربية</option><option>من العربية إلى الإنجليزية</option></select></label>
+<label>التاريخ<input name="interp-date" data-k="التاريخ" required placeholder="مثال: 12 و13 ديسمبر 2026"></label>
+<label>المدينة والمكان، أو عن بُعد<input name="interp-where" data-k="المدينة والمكان، أو عن بُعد" placeholder="مثال: القاهرة، أو عبر Zoom"></label>
+<label>ساعات العمل في اليوم<input name="interp-hours" data-k="ساعات العمل في اليوم" placeholder="مثال: من 9:00 إلى 17:00"></label>
+<label>كابينة الترجمة والأجهزة<select name="interp-equip" data-k="كابينة الترجمة والأجهزة"><option value="">اختر…</option><option>متوفرة في مكان الفعالية</option><option>غير متوفرة بعد</option><option>لا أعرف</option><option>منصة عن بُعد</option></select></label>
+<label class="full">عن الفعالية<textarea name="interp-about" data-k="عن الفعالية" placeholder="الموضوع، والجمهور، وعدد المشاركين، وهل تتوفر الكلمات أو العروض مسبقًا…"></textarea></label>
+</div>
+<div class="grp" data-svc="trans" hidden>
+<label>اللغتان<select name="trans-pair" data-k="اللغتان"><option value="">اختر…</option><option>من الإنجليزية إلى العربية</option><option>من الألمانية إلى العربية</option></select></label>
+<label>الخدمة<select name="trans-task" data-k="الخدمة"><option value="">اختر…</option><option>ترجمة</option><option>مراجعة وتدقيق</option><option>تحرير لاحق للترجمة الآلية</option><option>ترجمة للشاشة</option></select></label>
+<label>المجال<select name="trans-field" data-k="المجال"><option value="">اختر…</option><option>التسويق</option><option>المحتوى التقني</option><option>السيارات</option><option>تقنية المعلومات والبرمجيات</option><option>التعليم الإلكتروني</option><option>الطب</option><option>مجال آخر</option></select></label>
+<label>عدد الكلمات (تقريبًا)<input name="trans-words" data-k="عدد الكلمات (تقريبًا)" placeholder="مثال: 3500"></label>
+<label>موعد التسليم<input type="date" name="trans-deadline" data-k="موعد التسليم" required></label>
+<label>صيغة الملف<input name="trans-format" data-k="صيغة الملف" placeholder="Word أو PDF أو Excel أو حزمة Trados أو Phrase…"></label>
+<label class="full">معلومات أخرى<textarea name="trans-about" data-k="معلومات أخرى" placeholder="الجمهور، ودليل الأسلوب، ومسرد المصطلحات، والمواد المرجعية…"></textarea></label>
+<p class="hint">إن كانت الملفات جاهزة، يُرجى إرفاقها بالبريد الإلكتروني.</p>
+</div>
+<div class="grp" data-svc="vo" hidden>
+<label>اللهجة<select name="vo-variety" data-k="اللهجة"><option value="">اختر…</option><option>العربية الفصحى</option><option>اللهجة المصرية</option></select></label>
+<label>الاستخدام<select name="vo-use" data-k="الاستخدام"><option value="">اختر…</option><option>إعلان</option><option>سرد أو فيلم وثائقي</option><option>تعليم إلكتروني</option><option>رد آلي أو نظام هاتفي</option><option>استخدام آخر</option></select></label>
+<label>الأصوات<select name="vo-voices" data-k="الأصوات"><option value="">اختر…</option><option>صوت نسائي واحد (صوتي)</option><option>أصوات نسائية ورجالية</option><option>عدة أصوات</option></select></label>
+<label>طول النص<input name="vo-length" data-k="طول النص" placeholder="بالكلمات أو بالدقائق"></label>
+<label>موعد التسليم<input type="date" name="vo-deadline" data-k="موعد التسليم" required></label>
+<label>النص<select name="vo-script" data-k="النص"><option value="">اختر…</option><option>جاهز بالعربية</option><option>يحتاج إلى ترجمة إلى العربية</option><option>لم يُكتب بعد</option></select></label>
+<label class="full">معلومات أخرى<textarea name="vo-about" data-k="معلومات أخرى" placeholder="النبرة، والإيقاع، والفيديو المطلوب مزامنته، وصيغة التسليم…"></textarea></label>
+<p class="hint">إن كانت الملفات جاهزة، يُرجى إرفاقها بالبريد الإلكتروني.</p>
+</div>
+<div class="send" id="qsend" hidden><button type="submit" value="mail">أرسل بالبريد الإلكتروني</button><button type="submit" value="wa">أرسل عبر واتساب</button></div>
+<p class="note" id="qnote" hidden>تُفتح رسالتك جاهزة للإرسال، ولا يحفظ الموقع أي بيانات.</p>
 </form>
 <script>
-(function(){var f=document.getElementById('quote'),T={"keys": ["الاسم", "الجهة", "الخدمة", "اللغات", "التاريخ", "المكان", "المدة", "التفاصيل"], "hello": "مرحبًا مروة، أرغب في عرض سعر:", "subj": "طلب عرض سعر"},F=['name','org','service','langs','date','where','dur','notes'];
-f.addEventListener('submit',function(e){e.preventDefault();var b=e.submitter||document.activeElement,lines=[T.hello,''];
-F.forEach(function(k,i){var v=(f.elements[k].value||'').trim();if(v)lines.push(T.keys[i]+': '+v)});
-var msg=lines.join('\n');
-if(!b||b.value!=='wa')location.href='mailto:info@marwagouda.com?subject='+encodeURIComponent(T.subj)+'&body='+encodeURIComponent(msg);
+(function(){var f=document.getElementById('quote'),T={"hello": "مرحبًا مروة، أرغب في عرض سعر لخدمة {svc}.", "subj": "طلب عرض سعر: {svc}", "kName": "الاسم", "kOrg": "الجهة"};
+function sync(){var c=f.querySelector('input[name=svc]:checked'),s=c&&c.value;
+document.getElementById('qhint').hidden=!!s;document.getElementById('qbody').hidden=!s;document.getElementById('qsend').hidden=!s;document.getElementById('qnote').hidden=!s;
+f.querySelectorAll('.grp[data-svc]').forEach(function(g){var on=g.getAttribute('data-svc')===s;g.hidden=!on;
+g.querySelectorAll('input,select,textarea').forEach(function(el){el.disabled=!on})});}
+f.addEventListener('change',function(e){if(e.target.name==='svc')sync()});sync();
+f.addEventListener('submit',function(e){e.preventDefault();
+if(!f.checkValidity()){f.reportValidity();return}
+var b=e.submitter||document.activeElement,c=f.querySelector('input[name=svc]:checked'),svc=c.getAttribute('data-name');
+var lines=[T.hello.replace('{svc}',svc),''];
+function add(k,v){v=(v||'').trim();if(v)lines.push(k+': '+v)}
+add(T.kName,f.elements.name.value);add(T.kOrg,f.elements.org.value);
+f.querySelectorAll('.grp[data-svc="'+c.value+'"] [data-k]').forEach(function(el){add(el.getAttribute('data-k'),el.value)});
+var msg=lines.join('\n'),subj=T.subj.replace('{svc}',svc);
+if(!b||b.value!=='wa')location.href='mailto:info@marwagouda.com?subject='+encodeURIComponent(subj)+'&body='+encodeURIComponent(msg);
 else window.open('https://wa.me/201000971283?text='+encodeURIComponent(msg),'_blank','noopener');});})();
 </script>
 <hr>
